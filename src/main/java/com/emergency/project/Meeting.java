@@ -1,49 +1,58 @@
 package com.emergency.project;
 
 import java.io.Serializable;
-import java.sql.Date;
+import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 @Table(name="Meetings")
 public class Meeting implements Serializable{
 	
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int meetingId;
-	private String soundOperator;
-	private String attendant;
-	private int attendance;
-	private String meetingType;
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	private long meetingId;
+	
+	@Temporal(TemporalType.DATE)
 	private Date meetingDate;
 	private String meetingDay;
+	private String meetingType;
+
+	private int attendance;
+
+	private String soundOperator;
+	private String attendant;
+	
+	
 	private String announcement;
 	
 	public Meeting() {
 		
 	}
 	
-	
-	public Meeting(int meetingId, String soundOperator, String attendant, int attendance, String meetingType,
-			Date meetingDate, String meetingDay, String announcement) {
+	public Meeting(int meetingId, Date meetingDate, String meetingDay, String meetingType, int attendance,
+			String soundOperator, String attendant, String announcement) {
 		super();
 		this.meetingId = meetingId;
-		this.soundOperator = soundOperator;
-		this.attendant = attendant;
-		this.attendance = attendance;
-		this.meetingType = meetingType;
 		this.meetingDate = meetingDate;
 		this.meetingDay = meetingDay;
+		this.meetingType = meetingType;
+		this.attendance = attendance;
+		this.soundOperator = soundOperator;
+		this.attendant = attendant;
 		this.announcement = announcement;
 	}
 
 
-	public int getMeetingId() {
+
+
+	public long getMeetingId() {
 		return meetingId;
 	}
 

@@ -1,6 +1,7 @@
 package com.emergency.project;
 
-import java.sql.Date;
+
+import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
@@ -28,43 +29,43 @@ public class MeetingController {
 	
 	//Return all meetings in the database
 	@RequestMapping(method = RequestMethod.GET, value="/meetings")
-	public Iterator <Meeting> getAllMeetings(){
+	public List <Meeting> getAllMeetings(){
 		return meetingService.findAllMeetings();
 	}
 	
 	//Return all meetings in the database by date
-	@RequestMapping(method = RequestMethod.GET, value="/meetings/{meetingDate}")
+	@RequestMapping(method = RequestMethod.GET, value="/meetingsdate/{meetingDate}")
 	public List<Meeting> getAllMeetingsByDate(@PathVariable Date meetingDate){
 		return meetingService.findAllMeetingsByDate(meetingDate);
 	}
 	
 	//Return all meetings in the database by Attendant
-	@RequestMapping(method = RequestMethod.GET, value="/meetings/{attendant}")
+	@RequestMapping(method = RequestMethod.GET, value="/meetingsatt/{attendant}")
 	public List<Meeting> getAllMeetingsByAttendant(@PathVariable String attendant){
 		return meetingService.findAllByAttendant(attendant);
 	}
 	
 	//Return all meetings in the database by Sound Operator
-	@RequestMapping(method = RequestMethod.GET, value="/meetings/{soundOperator")
+	@RequestMapping(method = RequestMethod.GET, value="/meetingsso/{soundOperator")
 	public List <Meeting> getAllMeetingsBySoundOperator(@ PathVariable String soundOperator){
 		return meetingService.findAllBySoundOperator(soundOperator);
 	}
 	
 	
 	//Return all meetings in the database  by Meeting Type
-	@RequestMapping(method = RequestMethod.GET, value="/meetings/{meetingType}")
+	@RequestMapping(method = RequestMethod.GET, value="/meetingstype/{meetingType}")
 	public List<Meeting> getAllMeetingsByMeetingsType(@PathVariable String meetingType){
 	return meetingService.findAllByMeetingType(meetingType);
 }
 	
 	//Return all meetings in the database by Meeting Day
-	@RequestMapping(method = RequestMethod.GET, value="/meetings/{meetingDay")
+	@RequestMapping(method = RequestMethod.GET, value="/meetingsday/{meetingDay")
 	public List<Meeting> getAllMeetingsByMeetingDay(@PathVariable String meetingDay){
 		return meetingService.findAllByMeetingDay(meetingDay);
 	}
 	
 	//Return just one meeting by ID
-	@RequestMapping(method = RequestMethod.GET, value="/meeting/{id}")
+	@RequestMapping(method = RequestMethod.GET , value="/meeting/{id}")
 	public Meeting getMeeting(@PathVariable long Id) {
 		return meetingService.FindOneMeetingById(Id);
 	}
@@ -77,7 +78,7 @@ public class MeetingController {
 	
 	//Save a new meeting
 	@RequestMapping(method= RequestMethod.POST, value="/meeting")
-	public void saveMeeting(Meeting meeting) {
+	public void saveMeeting(@RequestBody Meeting meeting) {
 		meetingService.saveMeeting(meeting);
 	}
 	
@@ -85,7 +86,7 @@ public class MeetingController {
 	@RequestMapping(method = RequestMethod.DELETE, value="/meeting/{Id}")
 	public Object deleteMeeting(@PathVariable long Id) {
 		meetingService.deleteMeeting(Id);
-		return Id + "Meeting Deleted";
+		return   "Meeting Id " +Id + " Deleted";
 		
 	}
 	
@@ -95,4 +96,6 @@ public class MeetingController {
 		meetingService.UpdateMeeting(Id, meeting);
 		return "Meeting " + Id + "has been updated to\n" + meeting;
 	}
+	
+	
 }

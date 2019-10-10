@@ -1,9 +1,10 @@
 package com.emergency.project;
 
-import java.sql.Date;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Optional;
@@ -18,22 +19,13 @@ public class MeetingService {
 @Autowired
 private MeetingRepository meetingRepo;
 
-/*
+
 public List<Meeting> findAllMeetings() {
 	List<Meeting> meetings = new ArrayList<Meeting>();
 	meetingRepo.findAll().forEach(meetings::add);
 	return meetings ;
-*/
+}
 
-	public Iterator<Meeting> findAllMeetings() {
-		//List<Meeting> meetings = new ArrayList<Meeting>();
-		Stack<Meeting> meetings = new Stack();
-		Iterator<Meeting> itr = meetings.iterator();
-		while(itr.hasNext()) {
-			itr.next();
-		}
-		return itr ;
-	}
 	
 	public List<Meeting> findAllMeetingsByDate(Date meetingDate){
 		List<Meeting> meetings = new ArrayList<Meeting>();
@@ -67,7 +59,7 @@ public List<Meeting> findAllMeetings() {
 		meetingRepo.save(meeting);
 	}
 	
-	public void deleteMeeting(Long Id) {
+	public void deleteMeeting(long Id) {
 		meetingRepo.deleteById(Id);
 	}
 	
@@ -87,4 +79,4 @@ public List<Meeting> findAllMeetings() {
 	}
 	
 	
-	}
+}

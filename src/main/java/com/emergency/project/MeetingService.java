@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.Stack;
 
+import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,7 +21,9 @@ public class MeetingService {
 private MeetingRepository meetingRepo;
 
 
-public List<Meeting> findAllMeetings() {
+
+
+public Iterable<Meeting> findAllMeetings() {
 	List<Meeting> meetings = new ArrayList<Meeting>();
 	meetingRepo.findAll().forEach(meetings::add);
 	return meetings ;
@@ -74,6 +77,7 @@ public List<Meeting> findAllMeetings() {
 	}
 	
 	public Meeting UpdateMeeting(long Id, Meeting meeting) {
+		
 		meetingRepo.save(meeting);
 		return meeting;
 	}

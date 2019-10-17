@@ -1,0 +1,67 @@
+2019-10-10 20:06:27.112  INFO 4552 --- [main] c.emergency.project.MeetingApplication   : Starting MeetingApplication on DESKTOP-IAJLH3M with PID 4552 (C:\Users\Devcon\eclipse-workspace\Meeting\target\classes started by Devcon in C:\Users\Devcon\eclipse-workspace\Meeting)
+2019-10-10 20:06:27.114  INFO 4552 --- [main] c.emergency.project.MeetingApplication   : No active profile set, falling back to default profiles: default
+2019-10-10 20:06:27.568  INFO 4552 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-10-10 20:06:27.647  INFO 4552 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 72ms. Found 1 repository interfaces.
+2019-10-10 20:06:28.018  INFO 4552 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$857e6b96] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-10-10 20:06:28.242  INFO 4552 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 7070 (http)
+2019-10-10 20:06:28.286  INFO 4552 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2019-10-10 20:06:28.288  INFO 4552 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.26]
+2019-10-10 20:06:28.437  INFO 4552 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2019-10-10 20:06:28.438  INFO 4552 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 1295 ms
+2019-10-10 20:06:28.692  INFO 4552 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2019-10-10 20:06:29.108  INFO 4552 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2019-10-10 20:06:29.146  INFO 4552 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2019-10-10 20:06:29.200  INFO 4552 --- [main] org.hibernate.Version                    : HHH000412: Hibernate Core {5.3.12.Final}
+2019-10-10 20:06:29.209  INFO 4552 --- [main] org.hibernate.cfg.Environment            : HHH000206: hibernate.properties not found
+2019-10-10 20:06:29.323  INFO 4552 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2019-10-10 20:06:29.420  INFO 4552 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2019-10-10 20:06:30.017  INFO 4552 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2019-10-10 20:06:30.496  INFO 4552 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2019-10-10 20:06:30.525  WARN 4552 --- [main] aWebConfiguration$JpaWebMvcConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2019-10-10 20:06:30.686  INFO 4552 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 7070 (http) with context path ''
+2019-10-10 20:06:30.687  INFO 4552 --- [main] c.emergency.project.MeetingApplication   : Started MeetingApplication in 3.817 seconds (JVM running for 4.475)
+2019-10-10 20:06:55.109  INFO 4552 --- [http-nio-7070-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-10-10 20:06:55.112  INFO 4552 --- [http-nio-7070-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2019-10-10 20:06:55.119  INFO 4552 --- [http-nio-7070-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 7 ms
+2019-10-10 20:06:55.132  WARN 4552 --- [http-nio-7070-exec-1] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'POST' not supported]
+2019-10-10 20:07:24.848  WARN 4552 --- [http-nio-7070-exec-3] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'POST' not supported]
+2019-10-10 20:07:34.601  INFO 4552 --- [RMI TCP Connection(2)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
+2019-10-10 20:07:34.607  INFO 4552 --- [RMI TCP Connection(2)-127.0.0.1] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2019-10-10 20:07:34.610  INFO 4552 --- [RMI TCP Connection(2)-127.0.0.1] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2019-10-10 20:07:34.616  INFO 4552 --- [RMI TCP Connection(2)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2019-10-10 20:07:34.667  INFO 4552 --- [RMI TCP Connection(2)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2019-10-10 20:07:52.673  INFO 16764 --- [main] c.emergency.project.MeetingApplication   : Starting MeetingApplication on DESKTOP-IAJLH3M with PID 16764 (C:\Users\Devcon\eclipse-workspace\Meeting\target\classes started by Devcon in C:\Users\Devcon\eclipse-workspace\Meeting)
+2019-10-10 20:07:52.676  INFO 16764 --- [main] c.emergency.project.MeetingApplication   : No active profile set, falling back to default profiles: default
+2019-10-10 20:07:53.150  INFO 16764 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-10-10 20:07:53.229  INFO 16764 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 72ms. Found 1 repository interfaces.
+2019-10-10 20:07:53.497  INFO 16764 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$3ad8b554] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-10-10 20:07:53.762  INFO 16764 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 7070 (http)
+2019-10-10 20:07:53.787  INFO 16764 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2019-10-10 20:07:53.787  INFO 16764 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.26]
+2019-10-10 20:07:53.930  INFO 16764 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2019-10-10 20:07:53.931  INFO 16764 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 1220 ms
+2019-10-10 20:07:54.093  INFO 16764 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2019-10-10 20:07:54.361  INFO 16764 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2019-10-10 20:07:54.402  INFO 16764 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2019-10-10 20:07:54.457  INFO 16764 --- [main] org.hibernate.Version                    : HHH000412: Hibernate Core {5.3.12.Final}
+2019-10-10 20:07:54.466  INFO 16764 --- [main] org.hibernate.cfg.Environment            : HHH000206: hibernate.properties not found
+2019-10-10 20:07:54.634  INFO 16764 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2019-10-10 20:07:54.757  INFO 16764 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2019-10-10 20:07:55.335  INFO 16764 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2019-10-10 20:07:55.968  INFO 16764 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2019-10-10 20:07:56.011  WARN 16764 --- [main] aWebConfiguration$JpaWebMvcConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2019-10-10 20:07:56.190  INFO 16764 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 7070 (http) with context path ''
+2019-10-10 20:07:56.191  INFO 16764 --- [main] c.emergency.project.MeetingApplication   : Started MeetingApplication in 3.809 seconds (JVM running for 4.531)
+2019-10-10 20:08:42.882  INFO 16764 --- [http-nio-7070-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-10-10 20:08:42.885  INFO 16764 --- [http-nio-7070-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2019-10-10 20:08:42.898  INFO 16764 --- [http-nio-7070-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 11 ms
+2019-10-10 20:08:42.918  WARN 16764 --- [http-nio-7070-exec-1] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'POST' not supported]
+2019-10-10 20:09:37.094  INFO 16764 --- [RMI TCP Connection(2)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
+2019-10-10 20:09:37.105  INFO 16764 --- [RMI TCP Connection(2)-127.0.0.1] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2019-10-10 20:09:37.109  INFO 16764 --- [RMI TCP Connection(2)-127.0.0.1] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2019-10-10 20:09:37.118  INFO 16764 --- [RMI TCP Connection(2)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2019-10-10 20:09:37.171  INFO 16764 --- [RMI TCP Connection(2)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.

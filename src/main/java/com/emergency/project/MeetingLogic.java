@@ -8,10 +8,10 @@ public class MeetingLogic {
 	
 	public String GetTypeOfMeeting(String meetingType) {
 		
-	if (meetingType.equalsIgnoreCase("WEEKEND")) {
+	if (meetingType.equalsIgnoreCase("WEEKEND") || (meetingType.equalsIgnoreCase("WEEKEND MEETING"))) {
 			meetingType = WEEKEND;			
 		}
-	else if(meetingType.equalsIgnoreCase("MIDWEEK")) {
+	else if(meetingType.equalsIgnoreCase("MIDWEEK") || (meetingType.equalsIgnoreCase("MIDWEEK MEETING"))) {
 			meetingType = MIDWEEK;
 	}
 	else {

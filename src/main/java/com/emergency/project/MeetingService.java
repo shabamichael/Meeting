@@ -12,6 +12,8 @@ import java.util.Stack;
 
 import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -23,38 +25,55 @@ private MeetingRepository meetingRepo;
 
 
 
-public Iterable<Meeting> findAllMeetings() {
+public List<Meeting> findAllMeetings() {
 	List<Meeting> meetings = new ArrayList<Meeting>();
 	meetingRepo.findAll().forEach(meetings::add);
 	return meetings ;
 }
 
 	
-	public List<Meeting> findAllMeetingsByDate(Date meetingDate){
+	public List<Meeting> findAllMeetingsByDate(Date meetingDate, PageRequest pageRequest){
 		List<Meeting> meetings = new ArrayList<Meeting>();
-		meetingRepo.findAllByMeetingDate(meetingDate).forEach(meetings::add);
+		meetingRepo.findAllByMeetingDate(meetingDate, pageRequest).forEach(meetings::add);
 		return meetings;
 		}
 		
-	public List<Meeting>findAllByAttendant(String attendant){
+	public List<Meeting>findAllByAttendantLastName(String attendantLastName, PageRequest pageRequest){
 		List<Meeting> meetings = new ArrayList<Meeting>();
-		meetingRepo.findAllByAttendant(attendant).forEach(meetings::add);
+		meetingRepo.findAllByAttendantLastName(attendantLastName, pageRequest).forEach(meetings::add);
+		return meetings;
+	}
+	public List<Meeting>findAllByAttendantFirstName(String attendantFirstName, PageRequest pageRequest){
+		List<Meeting> meetings = new ArrayList<Meeting>();
+		meetingRepo.findAllByAttendantFirstName(attendantFirstName, pageRequest).forEach(meetings::add);;
 		return meetings;
 	}
 	
-	public List<Meeting>findAllBySoundOperator(String soundOperator){
+	
+	public List<Meeting>findAllBySoundOperatorLastName(String soundOperatorLastName, PageRequest pageRequest){
 		List<Meeting> meetings = new ArrayList<Meeting>();
-		meetingRepo.findAllBySoundOperator(soundOperator).forEach(meetings::add);
+		meetingRepo.findAllBySoundOperatorLastName(soundOperatorLastName, pageRequest).forEach(meetings::add);
 		return meetings;
 	}
-	public List<Meeting>findAllByMeetingType(String meetingType){
-		List <Meeting> meetings = new ArrayList<Meeting>();
-		meetingRepo.findAllByMeetingType(meetingType).forEach(meetings::add);
+	
+	
+	public List<Meeting>findAllBySoundOperatorFirstName(String soundOperatorFirstName, PageRequest pageRequest){
+		List<Meeting> meetings = new ArrayList<Meeting>();
+		meetingRepo.findAllBySoundOperatorLastName(soundOperatorFirstName, pageRequest).forEach(meetings::add);
 		return meetings;
 	}
-	public List<Meeting>findAllByMeetingDay(String meetingDay){
+	
+	
+	public List<Meeting>findAllByMeetingType(String meetingType, PageRequest pageRequest){
 		List <Meeting> meetings = new ArrayList<Meeting>();
-		meetingRepo.findAllByMeetingDay(meetingDay).forEach(meetings::add);
+		meetingRepo.findAllByMeetingType(meetingType, pageRequest).forEach(meetings::add);
+		return meetings;
+	}
+	
+	 
+	public List<Meeting>findAllByMeetingDay(String meetingDay, PageRequest pageRequest){
+		List <Meeting> meetings = new ArrayList<Meeting>();
+		meetingRepo.findAllByMeetingDay(meetingDay, pageRequest).forEach(meetings::add);
 		return meetings;
 	}
 	

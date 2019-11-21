@@ -1,6 +1,7 @@
 package com.emergency.project;
 
 import java.time.format.DateTimeFormatter;
+import java.util.Date;
 
 public class MeetingLogic {
 	public String WEEKEND = "WEEKEND MEETING";
@@ -19,6 +20,13 @@ public class MeetingLogic {
 	}
 	return meetingType;
 	}
-
 	
+	public String currentDate() {
+		return new Date().toString();
+		
+	}
+	
+	
+	
+
 }

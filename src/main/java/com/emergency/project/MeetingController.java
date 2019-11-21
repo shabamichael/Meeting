@@ -5,11 +5,17 @@ import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
+import javax.servlet.RequestDispatcher;
+import javax.servlet.http.HttpServletRequest;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.web.servlet.error.ErrorController;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
@@ -35,9 +41,10 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @RestController
 @RequestMapping(MeetingController.BASE_URL)
-public class MeetingController {
+public class MeetingController  {
 	private Logger logger =  LoggerFactory.getLogger(MeetingController.class);
 	
+
 	public static final String BASE_URL = "/api/v1";
 	
 	@Autowired
@@ -63,7 +70,7 @@ public class MeetingController {
 	@RequestMapping(method=RequestMethod.GET, value = "/meetings")
 	@GetMapping(value="/meetings")
 	//public List <Meeting> getAllMeetings(){
-		public Iterable <Meeting> getAllMeetings(){
+		public List <Meeting> getAllMeetings(){
 		logger.trace("Response Status:- " + HttpStatus.OK +" Return all meetings in the database");
 		return meetingService.findAllMeetings();
 	}
@@ -73,29 +80,52 @@ public class MeetingController {
 			notes = "This API returns all meetings in the database by meeting date  present on the DB",
 			response = Meeting.class)
 	@RequestMapping(method = RequestMethod.GET, value="/date/{meetingDate}")
-	public List<Meeting> getAllMeetingsByDate(@PathVariable Date meetingDate){
+	public List<Meeting> getAllMeetingsByDate(@PathVariable Date meetingDate, PageRequest pageRequest){
 		logger.trace("Response Status:- " + HttpStatus.OK +" Return all meetings in the database by date");
-		return meetingService.findAllMeetingsByDate(meetingDate);
+		return meetingService.findAllMeetingsByDate(meetingDate, pageRequest);
 	}
 	
-	//Return all meetings in the database by Attendant
-	@ApiOperation(value = "Returns list of all meetings in the database by Attendant ", 
-			notes = "This API returns all meetings in the database by Attendant  present on the DB",
+	//Return all meetings in the database by Attendant Last Name or Surname
+	@ApiOperation(value = "Returns list of all meetings in the database by Attendant Last Name or Surname ", 
+			notes = "This API returns all meetings in the database by Attendant Surname or LastName present on the DB",
 			response = Meeting.class)
-	@RequestMapping(method = RequestMethod.GET, value="/attendant/{attendant}")
-	public List<Meeting> getAllMeetingsByAttendant(@PathVariable String attendant){
-		logger.trace("Response Status:- " + HttpStatus.OK +" Return all meetings in the database by Attendant");
-		return meetingService.findAllByAttendant(attendant);
+	@RequestMapping(method = RequestMethod.GET, value="/attendantlastname/{attendantLastName}")
+	public List<Meeting> getAllMeetingsByAttendantLastName(@PathVariable("attendantLastName") String attendantLastName, PageRequest pageRequest){
+		logger.trace("Response Status:- " + HttpStatus.OK +" Return all meetings in the database by Attendant Last Name or Surname " + attendantLastName);
+		return meetingService.findAllByAttendantLastName(attendantLastName, pageRequest );
 	}
 	
-	//Return all meetings in the database by Sound Operator
+	//Return all meetings in the database by Attendant First Name 
+		@ApiOperation(value = "Returns list of all meetings in the database by Attendant First Name  ", 
+				notes = "This API returns all meetings in the database by Attendant First  present on the DB",
+				response = Meeting.class)
+		@RequestMapping(method = RequestMethod.GET, value="/attendantfirstname/{attendantFirstName}")
+		public List<Meeting> getAllMeetingsByAttendantFirstName(@PathVariable("attendantFirstName") String attendantFirstName, PageRequest pageRequest){
+			logger.trace("Response Status:- " + HttpStatus.OK +" Return all meetings in the database by Attendant First Name " + attendantFirstName);
+			return meetingService.findAllByAttendantFirstName(attendantFirstName, pageRequest);
+		}
+		
+	
+	
+	//Return all meetings in the database by Sound Operator Last Name or Surname
 	@ApiOperation(value = "Returns list of all meetings in the database by Sound Operator ", 
 			notes = "This API returns all meetings in the database by Sound Operator  present on the DB",
 			response = Meeting.class)
-	@RequestMapping(method = RequestMethod.GET, value="/operator/{soundOperator}")
-	public List <Meeting> getAllMeetingsBySoundOperator(@ PathVariable("soundOperator") String soundOperator){
-		logger.trace("Response Status:- " + HttpStatus.OK +" Return all meetings in the database by Sound Operator");
-		return meetingService.findAllBySoundOperator(soundOperator);
+	@RequestMapping(method = RequestMethod.GET, value="/soundOperatorlastname/{soundOperatorLastName}")
+	public List <Meeting> getAllMeetingsBySoundOperatorLastName(@PathVariable("soundOperatorLastName") String soundOperatorLastName, PageRequest pageRequest){
+		logger.trace("Response Status:- " + HttpStatus.OK +" Return all meetings in the database by Sound Operator Last Name or Surname " + soundOperatorLastName);
+		return meetingService.findAllBySoundOperatorLastName(soundOperatorLastName, pageRequest);
+	}
+	
+	
+	//Return all meetings in the database by Sound Operator First Name
+	@ApiOperation(value = "Returns list of all meetings in the database by Sound OperatorFirst Name", 
+			notes = "This API returns all meetings in the database by Sound Operator First Name present on the DB",
+			response = Meeting.class)
+	@RequestMapping(method = RequestMethod.GET, value="/soundOperatorFirstName/{soundOperatorFirstName}")
+	public List <Meeting> getAllMeetingsBySoundOperatorFirstName(@PathVariable("soundOperatorFirstName") String soundOperatorFirstName, PageRequest pageRequest){
+		logger.trace("Response Status:- " + HttpStatus.OK +" Return all meetings in the database by Sound Operator First Name " +  soundOperatorFirstName);
+		return meetingService.findAllBySoundOperatorFirstName(soundOperatorFirstName, pageRequest);
 	}
 	
 	
@@ -104,9 +134,9 @@ public class MeetingController {
 			notes = "This API returns all meetings in the database by Meeting Type  present on the DB",
 			response = Meeting.class)
 	@RequestMapping(method = RequestMethod.GET, value="/meetingtype/{type}")
-	public List<Meeting> getAllMeetingsByMeetingsType(@PathVariable("type") String type){
+	public List<Meeting> getAllMeetingsByMeetingsType(@PathVariable("type") String type, PageRequest pageRequest){
 		logger.trace("Response Status:- " + HttpStatus.OK +" Return all meetings in the database  by Meeting Type");
-	return meetingService.findAllByMeetingType(type);
+	return meetingService.findAllByMeetingType(type, pageRequest);
 }
 	
 	//Return all meetings in the database by Meeting Day
@@ -114,9 +144,9 @@ public class MeetingController {
 			notes = "This API returns all meetings in the database by Meeting Day  present on the DB",
 			response = Meeting.class)
 	@RequestMapping(method = RequestMethod.GET, value="/meetingday/{day}")
-	public List<Meeting> getAllMeetingsByMeetingDay(@PathVariable("day") String day){
+	public List<Meeting> getAllMeetingsByMeetingDay(@PathVariable("day") String day, PageRequest pageRequest){
 		logger.trace("Response Status:- " + HttpStatus.OK +" Return all meetings in the database by Meeting Day");
-		return meetingService.findAllByMeetingDay(day);
+		return meetingService.findAllByMeetingDay(day, pageRequest);
 	}
 	
 	//Return just one meeting by ID
@@ -151,7 +181,14 @@ public class MeetingController {
 	public void saveMeeting(@RequestBody Meeting meeting) {
 		logger.trace("Response Status:- "+HttpStatus.CREATED + ". A new meeting object has been successfully created..."  );
 		meetingService.saveMeeting(meeting);
+		
+		
+		
+		
 	}
+	
+	
+	
 	
 	//Update an existing meeting
 	@ApiOperation(value = "Updates an existing meetings object API ", 
@@ -177,11 +214,9 @@ public class MeetingController {
 	public Object deleteMeeting(@PathVariable long Id) {
 		logger.trace("Response Status:- " + HttpStatus.OK + " Successfully deleted an existing meeting Id No "+ Id + "...");
 		meetingService.deleteMeeting(Id);
-		return   "Meeting Id " +Id + " has been deleted";
-		
+		return   "Meeting Id " +Id + " has been deleted";	
 	}
-	
-
-	
-	
+}
+interface LamdaSave{
+	void MeetingSave();
 }
